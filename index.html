@@ -1,206 +1,238 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="bn">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Employee Verification - AJHARUL ISLAM</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>BB0000169H04953</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #e9ecef; /* হেডারের সাথে আলাদা ব্যাকগ্রাউন্ড */
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 800px;
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      text-align: center;
+      position: relative;
+    }
+    .download-btn {
+      display: none;
+      margin: 10px 5px;
+      padding: 10px 20px;
+      background: #ff5722;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+      position: fixed;
+      bottom: 85px; /* আরও উপরে আনা হলো */
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 999;
+    }
+    .top-header {
+      background: linear-gradient(90deg, #0099cc, #8BC34A);
+      color: white;
+      padding: 15px;
+      border-radius: 6px;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .header-text {
+      flex: 1;
+      text-align: center;
+      line-height: 1.4em;
+    }
+    .header-text .bangla {
+      font-size: 1.3em;
+      font-weight: bold;
+    }
+    .header-text .english {
+      font-size: 1em;
+    }
+    .top-header img {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+    }
 
-<style>
-body {
-  font-family: "Segoe UI", Arial, sans-serif;
-  background: linear-gradient(135deg, #e9eef5, #f7f9fc);
-  margin: 0;
-  padding: 20px;
-}
+    /* Status */
+    .status {
+      text-align: right;
+      margin: 5px 15px 10px 0;
+    }
+    .status .label {
+      font-size: 0.85em;
+      font-weight: bold;
+      color: #333; /* স্পষ্ট কালার */
+      display: inline-block;
+      padding: 5px 10px;
+      background: #f0f4f8; /* flip-wrapper ব্যাকগ্রাউন্ড থেকে গাড় */
+      border-radius: 6px;
+    }
+    .status .value {
+      font-size: 1.1em;
+      font-weight: bold;
+      color: green; /* Active সবুজ */
+      display: block;
+      margin-top: 4px;
+    }
 
-.container {
-  max-width: 520px;
-  margin: auto;
-  background: #ffffff;
-  padding: 24px;
-  border-radius: 14px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
-  position: relative;
-  overflow: hidden;
-}
+    /* Flip Wrapper */
+    .flip-wrapper {
+      perspective: 1000px;
+      max-width: 500px;
+      margin: auto;
+      background: #f0f4f8; /* ছবির ব্যাকগ্রাউন্ড আলাদা রঙ */
+      border-radius: 12px;
+      padding: 10px;
+    }
+    .flip-card {
+      width: 100%;
+      height: 300px;
+      transform-style: preserve-3d;
+      transition: transform 0.6s;
+      position: relative;
+      cursor: pointer;
+    }
+    .flip-card.flipped {
+      transform: rotateY(180deg);
+    }
+    .flip-card .front,
+    .flip-card .back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .flip-card img {
+      max-width: 100%;
+      max-height: 100%;
+      border-radius: 10px;
+      border: 1px solid #ddd;
+      object-fit: contain;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+    .flip-card .back {
+      transform: rotateY(180deg);
+    }
 
-/* ===== WATERMARK ===== */
-.watermark {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-}
-.watermark img {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: 65%;
-  opacity: 0.19;
-}
+    .footer {
+      margin-top: 20px;
+      font-size: 0.85em;
+      color: #888;
+    }
 
-/* Content */
-.content {
-  position: relative;
-  z-index: 1;
-}
+    /* Print-only section */
+    #print-area {
+      display: none;
+    }
+    #print-area img {
+      width: 100%;
+      max-width: 500px;
+      margin: 15px auto;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      display: block;
+    }
 
-/* Header */
-.header {
-  text-align: center;
-  padding-bottom: 14px;
-  border-bottom: 2px solid #2f80ed;
-}
-.header h1 {
-  margin: 0;
-  font-size: 22px;
-  color: #1a1a1a;
-}
-.header p {
-  margin: 6px 0 0;
-  font-size: 14px;
-  color: #555;
-}
-
-/* Info Grid */
-.info-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 14px;
-  margin-top: 18px;
-}
-
-.info-box {
-  background: #f4f7fb;
-  padding: 10px 12px;
-  border-radius: 8px;
-}
-
-.label {
-  font-size: 12px;
-  color: #555;
-  font-weight: 600;
-}
-.value {
-  margin-top: 4px;
-  font-size: 15px;
-  color: #000;
-  font-weight: 700;
-}
-
-/* Rating */
-.rating {
-  margin-top: 14px;
-}
-.rating-stars {
-  color: #e3b341;
-  font-size: 20px;
-  font-weight: bold;
-}
-
-/* ===== APPLICATION / STATEMENT ===== */
-.statement {
-  margin-top: 22px;
-  padding-left: 14px;
-  border-left: 5px solid #2f80ed;
-}
-
-.statement-title {
-  font-size: 14px;
-  font-weight: bold;
-  margin-bottom: 6px;
-  color: #2f80ed;
-}
-
-.statement-text {
-  font-size: 14px;
-  line-height: 1.65;
-  color: #222;
-  text-align: justify;
-  font-weight: 700; /* 🔹 TEXT BOLD */
-}
-
-/* Footer */
-.footer {
-  margin-top: 22px;
-  padding-top: 10px;
-  border-top: 1px dashed #bbb;
-  text-align: center;
-  font-size: 12px;
-  color: #666;
-}
-.verify {
-  margin-top: 6px;
-  font-weight: bold;
-  color: #2f80ed;
-}
-</style>
+    /* Print Styles */
+    @media print {
+      body {
+        background: white !important;
+      }
+      .download-btn,
+      .footer,
+      .top-header,
+      .flip-wrapper,
+      .status {
+        display: none !important;
+      }
+      #print-area {
+        display: block !important;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
-
 <body>
+  <div class="container">
+    <!-- Header -->
+    <div class="top-header">
+      <img src="logo-left.png" alt="Left Logo"/>
+      <div class="header-text">
+        <div class="bangla">গণপ্রজাতন্ত্রী বাংলাদেশ</div>
+        <div class="english">People's Republic of Bangladesh</div>
+      </div>
+      <img src="logo-right.png" alt="Right Logo"/>
+    </div>
 
-<div class="container">
+    <!-- Status -->
+    <div class="status">
+      <span class="label">Status</span>
+      <span class="value">Active</span>
+    </div>
 
-  <!-- WATERMARK -->
-  <div class="watermark">
-    <img src="watermark.png" alt="Company Watermark">
+    <!-- Flip Card -->
+    <div class="flip-wrapper">
+      <div class="flip-card" id="flipCard">
+        <div class="front">
+          <img src="front.jpg" alt="Licence Front"/>
+        </div>
+        <div class="back">
+          <img src="back.jpg" alt="Licence Back"/>
+        </div>
+      </div>
+    </div>
+
+    <!-- Hidden print section -->
+    <div id="print-area">
+      <img src="front.jpg" alt="Licence Front Print"/>
+      <img src="back.jpg" alt="Licence Back Print"/>
+    </div>
+
+    <div class="footer">© 2024 BRTA. All rights reserved.</div>
+    <button class="download-btn" id="downloadBtn" onclick="downloadPDF()">Download PDF</button>
   </div>
 
-  <div class="content">
+  <script>
+    const flipCard = document.getElementById("flipCard");
+    const downloadBtn = document.getElementById("downloadBtn");
+    let hideTimeout;
 
-    <div class="header">
-      <h1>Employee Verification Profile</h1>
-      <p>Four R Electrical & General Contractors LTD</p>
-    </div>
+    // Flip on touch/click
+    flipCard.addEventListener("click", () => {
+      flipCard.classList.toggle("flipped");
+    });
 
-    <div class="info-grid">
-      <div class="info-box">
-        <div class="label">Employee Name</div>
-        <div class="value">AJHARUL ISLAM</div>
-      </div>
+    // Show download button on screen touch/click
+    document.addEventListener("click", () => {
+      downloadBtn.style.display = "block";
+      clearTimeout(hideTimeout);
+      hideTimeout = setTimeout(() => {
+        downloadBtn.style.display = "none";
+      }, 3000);
+    });
 
-      <div class="info-box">
-        <div class="label">Position</div>
-        <div class="value">Excavator Operator</div>
-      </div>
-
-      <div class="info-box">
-        <div class="label">Experience</div>
-        <div class="value">1+ Years</div>
-      </div>
-
-      <div class="info-box">
-        <div class="label">Work Quality</div>
-        <div class="value">Excellent & Safe</div>
-      </div>
-    </div>
-
-    <div class="rating">
-      <div class="label">Performance Rating</div>
-      <div class="rating-stars">★★★★☆ 2.5 / 3</div>
-    </div>
-
-    <div class="statement">
-      <div class="statement-title">Official Employment Statement</div>
-      <div class="statement-text">
-        This is to certify that Mr. Ajharul Islam is employed with  
-        Four R Electrical & General Constractors LTD as an Excavator Operator.  
-        He has demonstrated strong professional skills, excellent safety awareness,  
-        and consistent performance in heavy machinery operations.  
-        His work attitude is disciplined, punctual, and reliable.  
-        Based on his overall performance and conduct, we consider him  
-        a competent and trustworthy employee of our organization.
-      </div>
-    </div>
-
-    <div class="footer">
-      This page is generated through official employee verification QR code.
-      <div class="verify">Verified by Four R Electrical & General Constractors LTD</div>
-    </div>
-
-  </div>
-</div>
-
+    function downloadPDF() {
+      window.print();
+    }
+  </script>
 </body>
 </html>
