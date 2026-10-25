@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Employee Verification - AJHARUL ISLAM</title>
+
+<style>
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: linear-gradient(135deg, #e9eef5, #f7f9fc);
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 520px;
+  margin: auto;
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+/* ===== WATERMARK ===== */
+.watermark {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+.watermark img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 65%;
+  opacity: 0.19;
+}
+
+/* Content */
+.content {
+  position: relative;
+  z-index: 1;
+}
+
+/* Header */
+.header {
+  text-align: center;
+  padding-bottom: 14px;
+  border-bottom: 2px solid #2f80ed;
+}
+.header h1 {
+  margin: 0;
+  font-size: 22px;
+  color: #1a1a1a;
+}
+.header p {
+  margin: 6px 0 0;
+  font-size: 14px;
+  color: #555;
+}
+
+/* Info Grid */
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+  margin-top: 18px;
+}
+
+.info-box {
+  background: #f4f7fb;
+  padding: 10px 12px;
+  border-radius: 8px;
+}
+
+.label {
+  font-size: 12px;
+  color: #555;
+  font-weight: 600;
+}
+.value {
+  margin-top: 4px;
+  font-size: 15px;
+  color: #000;
+  font-weight: 700;
+}
+
+/* Rating */
+.rating {
+  margin-top: 14px;
+}
+.rating-stars {
+  color: #e3b341;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* ===== APPLICATION / STATEMENT ===== */
+.statement {
+  margin-top: 22px;
+  padding-left: 14px;
+  border-left: 5px solid #2f80ed;
+}
+
+.statement-title {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 6px;
+  color: #2f80ed;
+}
+
+.statement-text {
+  font-size: 14px;
+  line-height: 1.65;
+  color: #222;
+  text-align: justify;
+  font-weight: 700; /* 🔹 TEXT BOLD */
+}
+
+/* Footer */
+.footer {
+  margin-top: 22px;
+  padding-top: 10px;
+  border-top: 1px dashed #bbb;
+  text-align: center;
+  font-size: 12px;
+  color: #666;
+}
+.verify {
+  margin-top: 6px;
+  font-weight: bold;
+  color: #2f80ed;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+  <!-- WATERMARK -->
+  <div class="watermark">
+    <img src="watermark.png" alt="Company Watermark">
+  </div>
+
+  <div class="content">
+
+    <div class="header">
+      <h1>Employee Verification Profile</h1>
+      <p>Four R Electrical & General Contractors LTD</p>
+    </div>
+
+    <div class="info-grid">
+      <div class="info-box">
+        <div class="label">Employee Name</div>
+        <div class="value">AJHARUL ISLAM</div>
+      </div>
+
+      <div class="info-box">
+        <div class="label">Position</div>
+        <div class="value">Excavator Operator</div>
+      </div>
+
+      <div class="info-box">
+        <div class="label">Experience</div>
+        <div class="value">1+ Years</div>
+      </div>
+
+      <div class="info-box">
+        <div class="label">Work Quality</div>
+        <div class="value">Excellent & Safe</div>
+      </div>
+    </div>
+
+    <div class="rating">
+      <div class="label">Performance Rating</div>
+      <div class="rating-stars">★★★★☆ 2.5 / 3</div>
+    </div>
+
+    <div class="statement">
+      <div class="statement-title">Official Employment Statement</div>
+      <div class="statement-text">
+        This is to certify that Mr. Ajharul Islam is employed with  
+        Four R Electrical & General Constractors LTD as an Excavator Operator.  
+        He has demonstrated strong professional skills, excellent safety awareness,  
+        and consistent performance in heavy machinery operations.  
+        His work attitude is disciplined, punctual, and reliable.  
+        Based on his overall performance and conduct, we consider him  
+        a competent and trustworthy employee of our organization.
+      </div>
+    </div>
+
+    <div class="footer">
+      This page is generated through official employee verification QR code.
+      <div class="verify">Verified by Four R Electrical & General Constractors LTD</div>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>
